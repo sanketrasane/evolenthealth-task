@@ -1,0 +1,88 @@
+<!-- Header -->
+<div class="row align-items-center">
+  <div class="col-md-10 col-sm-10 col-10">
+    <h4>
+      All Contacts
+    </h4>
+  </div>
+  <div class="col-md-2 col-sm-2 col-2">
+    <span class="operation-btn">
+      <button class="btn add-new-button" (click)="onAddBtnClicked()">
+        Add New
+      </button>
+    </span>
+  </div>
+</div>
+
+<!-- Contacts rows -->
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col" class="d-none d-lg-table-cell">Email</th>
+        <th scope="col" class="d-none d-lg-table-cell">Phone</th>
+        <th scope="col">Status</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let contact of contacts | async">
+        <td class="contact-name" (click)="viewContact(contact)">
+          {{ contact.firstName | titlecase }} &nbsp;
+          {{ contact.lastName | titlecase }}
+        </td>
+        <td class="d-none d-lg-table-cell">{{ contact.emailAddress }}</td>
+        <td class="d-none d-lg-table-cell">{{ contact.phone }}</td>
+        <td>
+          <span
+            class="status"
+            [class.active]="contact.status == 'active'"
+            [class.inactive]="contact.status == 'inactive'"
+          >
+            {{ contact.status | titlecase }}
+          </span>
+        </td>
+        <td>
+          <span class="operation-btn">
+            <button class="btn edit-button" (click)="onEditBtnClicked(contact)">
+              Edit
+            </button>
+            <button
+              class="btn btn-outline-danger"
+              appConfirmation
+              [message]="'Do you want to Delete User?'"
+              (confirmEvent)="onDeleteBtnClicked(contact)"
+            >
+              Delete
+            </button>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Hidden modals; will be visible on event trigger -->
+<app-modal #editContactModal headerText="Edit Contact">
+  <app-contact-form
+    [editMode]="true"
+    [contact]="contact"
+    (onFormSubmit)="onFormSubmit($event)"
+  ></app-contact-form>
+</app-modal>
+
+<app-modal #addContactModal headerText="Add Contact">
+  <app-contact-form
+    [editMode]="false"
+    (onFormSubmit)="onFormSubmit($event)"
+  ></app-contact-form>
+</app-modal>
+
+<app-modal #messageModal headerText="Alert">
+  {{ message }}
+</app-modal>
+
+<app-modal #contactProfileModal headerText="Contact Info">
+  <app-contact-profile [contact]="contact"></app-contact-profile>
+</app-modal>

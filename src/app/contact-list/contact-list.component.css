@@ -1,0 +1,50 @@
+h4 {
+  padding: 2rem 0;
+}
+
+.contact-name {
+  font-weight: 600;
+}
+
+.contact-name:hover {
+  cursor: pointer;
+}
+
+.operation-btn {
+  float: right;
+}
+
+.operation-btn button {
+  margin: 0 0.5rem;
+}
+
+.add-new-button {
+  background-color: #28c7fa;
+  color: white;
+}
+
+.edit-button {
+  color: #28c7fa;
+  border-color: #28c7fa;
+}
+
+.edit-button:hover {
+  background-color: #28c7fa;
+  border-color: #28c7fa;
+  color: #fff;
+}
+
+.status {
+  color: white;
+  padding: 0.2rem;
+  border-radius: 10%;
+  font-size: 0.8rem;
+}
+
+.active {
+  background-color: green;
+}
+
+.inactive {
+  background-color: gray;
+}

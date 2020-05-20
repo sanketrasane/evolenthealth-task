@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-10 col-md-10 col-sm-10 name">
+      {{ contact.firstName | titlecase }} &nbsp;
+      {{ contact.lastName | titlecase }}
+    </div>
+    <div class="col-2 col-md-2 col-sm-2">
+      <span
+        class="status"
+        [class.active]="contact.status == 'active'"
+        [class.inactive]="contact.status == 'inactive'"
+      >
+        {{ contact.status | titlecase }}
+      </span>
+    </div>
+  </div>
+  <div class="row email">
+    <div class="title col-md-3 col-3 col-3">
+      Email
+    </div>
+    <div class="col-md-9 col-9 col-9">
+      {{ contact.emailAddress | lowercase }}
+    </div>
+  </div>
+  <div class="row phone">
+    <div class="title col-md-3 col-3 col-3">
+      Phone
+    </div>
+    <div class="col-md-9 col-9 col-9">
+      {{ contact.phone }}
+    </div>
+  </div>
+</div>

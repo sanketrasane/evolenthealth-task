@@ -1,0 +1,15 @@
+.four-o-four {
+  font-size: 8rem;
+  font-weight: 700;
+}
+
+.page-not-found {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.home-button {
+  background-color: #28c7fa;
+  color: white;
+  margin-top: 1.5rem;
+}

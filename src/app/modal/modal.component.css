@@ -1,0 +1,11 @@
+.show-modal {
+  display: block;
+}
+
+.modal-backdrop {
+  opacity: 0.8;
+}
+
+.modal .modal-backdrop {
+  transition: all 0.4s ease;
+}

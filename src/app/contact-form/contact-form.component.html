@@ -1,0 +1,86 @@
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label>First Name</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="firstName"
+      [class.is-invalid]="
+        contactForm?.controls?.firstName?.dirty &&
+        contactForm?.controls?.firstName?.invalid
+      "
+      [class.is-valid]="
+        contactForm?.controls?.firstName?.dirty &&
+        contactForm?.controls?.firstName?.valid
+      "
+    />
+  </div>
+
+  <div class="form-group">
+    <label>Last Name</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="lastName"
+      [class.is-invalid]="
+        contactForm?.controls?.lastName?.dirty &&
+        contactForm?.controls?.lastName?.invalid
+      "
+      [class.is-valid]="
+        contactForm?.controls?.lastName?.dirty &&
+        contactForm?.controls?.lastName?.valid
+      "
+    />
+  </div>
+
+  <div class="form-group">
+    <label>Email address</label>
+    <input
+      type="email"
+      class="form-control"
+      formControlName="emailAddress"
+      [class.is-invalid]="
+        contactForm?.controls?.emailAddress?.dirty &&
+        contactForm?.controls?.emailAddress?.invalid
+      "
+      [class.is-valid]="
+        contactForm?.controls?.emailAddress?.dirty &&
+        contactForm?.controls?.emailAddress?.valid
+      "
+    />
+  </div>
+
+  <div class="form-group">
+    <label>Phone Number</label>
+    <input
+      type="phone"
+      class="form-control"
+      placeholder="Enter 10 digit phone number"
+      formControlName="phone"
+      [class.is-invalid]="
+        contactForm?.controls?.phone?.dirty &&
+        contactForm?.controls?.phone?.invalid
+      "
+      [class.is-valid]="
+        contactForm?.controls?.phone?.dirty &&
+        contactForm?.controls?.phone?.valid
+      "
+    />
+  </div>
+
+  <div class="form-group" *ngIf="editMode">
+    <label>Status</label>
+    <select class="form-control" formControlName="status">
+      <option value="active">Active</option>
+      <option value="inactive">Inactive</option>
+    </select>
+  </div>
+
+  <button
+    type="submit"
+    [disabled]="!contactForm.valid"
+    class="btn submit-button"
+  >
+    Done
+  </button>
+</form>
